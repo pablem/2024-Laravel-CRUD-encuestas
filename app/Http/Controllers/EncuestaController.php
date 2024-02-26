@@ -48,11 +48,10 @@ class EncuestaController extends Controller
     {
         $request->validate([
             'titulo_encuesta' => 'required|string|max:40',
-            'descripcion' => 'string|max:1000',
         ]);
         $encuesta->update([
             'titulo_encuesta' => $request->string('titulo_encuesta'),
-            'descripcion' => $request->string('descripcion'),
+            'descripcion' => $request->string('descripcion') ?? null,
         ]);
         return redirect()->route('encuestas.index');
     }
